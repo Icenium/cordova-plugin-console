@@ -89,7 +89,7 @@
     <platform name="wp8">
         <config-file target="config.xml" parent="/*">
             <feature name="Console">
-                <param name="wp-package" value="DebugConsole"/>
+                <param name="wp-package" value="AppBuilderOutput"/>
             </feature>
         </config-file>
 
@@ -102,6 +102,8 @@
         </js-module>
 
         <source-file src="src/wp/DebugConsole.cs" />
+        <source-file src="src/wp/AppBuilderOutput.cs" />
+        <source-file src="src/wp/SocketLogger.cs" />
     </platform>
 
         <!-- windows8 -->
