@@ -6,6 +6,7 @@ namespace WPCordovaClassLib.Cordova.Commands
 {
 	public class AppBuilderOutput : BaseCommand
 	{
+#if DEBUG
 		private readonly SocketLogger logger;
 
 		public AppBuilderOutput()
@@ -13,6 +14,7 @@ namespace WPCordovaClassLib.Cordova.Commands
 			this.logger = new SocketLogger();
 			this.logger.BindPort();
 		}
+#endif
 
 		public void logLevel(string options)
 		{
@@ -20,7 +22,9 @@ namespace WPCordovaClassLib.Cordova.Commands
 
 			Debug.WriteLine(message);
 
+#if DEBUG
 			this.logger.Log(message);
+#endif
 		}
 		
 		private static string ParseMessage(string options)
