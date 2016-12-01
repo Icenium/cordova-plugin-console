@@ -49,6 +49,8 @@
 	<header-file src="src/ios/CDVLogger.h" />
 	<source-file src="src/ios/CDVLogger.m" />
 
+	<framework src="libSystem.tbd" weak="true"/>
+
     </platform>
 
     <!-- ubuntu -->
