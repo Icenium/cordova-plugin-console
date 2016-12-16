@@ -71,6 +71,7 @@ if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"10.0") && _os_log_internal != NULL
     const NSUInteger kMaxChunkLength = 1023;\
     NSString *messageToLog = [NSString stringWithFormat:FORMAT, ##__VA_ARGS__];\
 \
+@autoreleasepool {\
     for (int i = 0; i < messageToLog.length; i+= kMaxChunkLength) {\
         NSRange range = NSMakeRange(i, MIN(messageToLog.length - i, kMaxChunkLength));\
         NSString *subString = [messageToLog substringWithRange:range];\
@@ -79,6 +80,7 @@ if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"10.0") && _os_log_internal != NULL
         _os_log_internal(&__dso_handle, OS_OBJECT_GLOBAL_OBJECT(os_log_t, _os_log_default), 0x00, "%{public}s", subString.UTF8String);\
         _Pragma("clang diagnostic pop")\
     }\
+}\
 } else {\
     NSLog(FORMAT, ##__VA_ARGS__);\
 }
